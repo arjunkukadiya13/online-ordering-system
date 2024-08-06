@@ -11,22 +11,21 @@ app.use(express.urlencoded({ extended: true }));
 const dbConfig = require("./config/db.config");
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
+
 mongoose
-  .connect(dbConfig.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(dbConfig.url)
   .then(() => {
     console.log("Connection established with the database");
   })
   .catch((err) => {
     console.error("Error in database connection: ", err);
-    process.exit();
+    process.exit(1);
   });
 
 // Routes
 const routes = require("./routes");
-// Enable CORS for requests from http://localhost:3030
+
+// Enable CORS for requests from specified origins
 app.use("/api", cors({
   origin: ["http://localhost:3030", "http://localhost:5002"],
 }), routes);

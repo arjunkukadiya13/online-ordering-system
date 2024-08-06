@@ -20,6 +20,6 @@ const loginDataSchema = new mongoose.Schema({
   },
 });
 
-const Logindata = mongoose.model("LoginData", userSchema);
+const Logindata = mongoose.model("LoginData", loginDataSchema);
 
 module.exports = Logindata;

@@ -79,3 +79,19 @@ exports.delete = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+// New function for user authentication
+exports.authenticate = async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required" });
+  }
+
+  try {
+    const user = await userService.authenticateUser(username, password);
+    res.send({ message: "Authentication successful", user });
+  } catch (err) {
+    console.error("Error authenticating User:", err);
+    res.status(401).json({ error: "Authentication failed" });
+  }
+};
