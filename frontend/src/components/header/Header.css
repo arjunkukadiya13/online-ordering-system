@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff8c3d;
+    padding: 10px;
+    color: white;
+    position: sticky; /* Keeps the header at the top */
+    top: 0;
+    z-index: 1000; /* Ensures the header stays above other content */
+  }
+  
+  .menu-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .search-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
