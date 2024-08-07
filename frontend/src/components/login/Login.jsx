@@ -1,5 +1,3 @@
-// Login.jsx
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -15,8 +13,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // No need to check credentials here, just navigate to the menu page
-    navigate("/menu");
+    const { username, password } = credentials;
+
+    if (username === "admin" && password === "admin1234") {
+      navigate("/admin");
+    } else {
+      navigate("/menu");
+    }
   };
 
   return (

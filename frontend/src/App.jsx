@@ -1,5 +1,4 @@
-// App.jsx
-import React, { useState } from "react"; // Import useState
+
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/login/Login";
