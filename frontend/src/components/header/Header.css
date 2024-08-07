@@ -1,22 +1,42 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ff8c3d;
-    padding: 10px;
-    color: white;
-    position: sticky; /* Keeps the header at the top */
-    top: 0;
-    z-index: 1000; /* Ensures the header stays above other content */
-  }
-  
-  .menu-icon {
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .search-icon {
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ff8c3d;
+  padding: 10px;
+  color: white;
+  position: sticky; /* Keeps the header at the top */
+  top: 0;
+  z-index: 1000; /* Ensures the header stays above other content */
+}
+
+.menu-icon,
+.search-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Style for cart information */
+.cart-info {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer; /* Change cursor to pointer to indicate interactivity */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.cart-info:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Darken background on hover */
+}
+
+.cart-icon {
+  margin-right: 5px;
+  font-size: 22px; /* Slightly larger icon size */
+}
+
+.cart-details {
+  font-size: 16px;
+  font-weight: bold;
+}

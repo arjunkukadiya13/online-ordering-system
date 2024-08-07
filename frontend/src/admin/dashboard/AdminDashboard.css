@@ -1,0 +1,30 @@
+/* AdminDashboard.css */
+
+.admin-dashboard {
+    padding: 20px;
+  }
+  
+  .dashboard-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .admin-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .admin-link {
+    padding: 10px 20px;
+    background-color: #ff8c3d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .admin-link:hover {
+    background-color: #e07b34;
+  }
+  

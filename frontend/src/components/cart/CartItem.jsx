@@ -1,8 +1,13 @@
 import React from "react";
 import "./CartItem.css";
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, onAddToCart }) => { // Accept onAddToCart as a prop
   const { name, country, image, weight, price, description } = item;
+
+  // Function to handle click event on the Add button
+  const handleAddClick = () => {
+    onAddToCart(item);
+  };
 
   return (
     <div className="menu-item">
@@ -15,7 +20,9 @@ const CartItem = ({ item }) => {
         <p className="menu-item-description">{description}</p>
         <div className="menu-item-footer">
           <p className="menu-item-price">{price}</p>
-          <button className="add-button">Add</button>
+          <button className="add-button" onClick={handleAddClick}>
+            Add
+          </button>
         </div>
       </div>
     </div>
