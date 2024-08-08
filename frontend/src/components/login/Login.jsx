@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ username: "", password: "" });
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -13,11 +14,23 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = credentials;
+    const { email, password } = credentials;
 
-    if (username === "admin" && password === "admin1234") {
+    if (email === "admin@gmail.com" && password === "admin1234") {
       navigate("/admin");
     } else {
+      const userData = {
+        email:email,
+        password:password
+      };
+      axios
+      .post("http://localhost:3000/api/user/auth", userData)
+      .then((res) => {
+          console.log(res.data.status)
+      })
+      .catch((error) => {
+          console.error("Error:", error); 
+      });
       navigate("/menu");
     }
   };
@@ -27,12 +40,12 @@ const Login = () => {
       <h2 className="login-title">Login</h2>
       <form onSubmit={handleSubmit} className="login-form">
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="email">email</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={credentials.username}
+            id="email"
+            name="email"
+            value={credentials.email}
             onChange={handleChange}
             required
           />
