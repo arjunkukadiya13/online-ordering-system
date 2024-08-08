@@ -9,15 +9,13 @@ const hashPassword = async (password) => {
 const comparePassword = async (password, hashedPassword) => {
   return await bcrypt.compare(password, hashedPassword);
 };
-exports.createUser = async (username, email, password, mobileno) => {
-  const status = "active";
-  const verified = false;
+exports.createUser = async (email, password, mobileno) => {
 
   // Hash the password before saving
   const hashedPassword = await hashPassword(password);
 
   const user = new UserModel({
-    username,
+    
     email,
     password: hashedPassword,
     mobileno,
@@ -50,8 +48,8 @@ exports.deleteUser = async (id) => {
   return await UserModel.findByIdAndRemove(id);
 };
 
-exports.authenticateUser = async (username, password) => {
-  const user = await UserModel.findOne({ username });
+exports.authenticateUser = async (email, password) => {
+  const user = await UserModel.findOne({ email });
   if (!user) {
     throw new Error("User not found");
   }

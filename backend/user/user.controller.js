@@ -1,13 +1,13 @@
 const userService = require("../user/user.service");
 
 exports.create = async (req, res) => {
-  const { username, email, password, mobileno } = req.body;
-  if (!username || !email || !password || !mobileno) {
+  const {  email, password, mobileno } = req.body;
+  if (  !email || !password || !mobileno) {
     return res.status(400).json({ message: "Required fields are missing" });
   }
 
   try {
-    const user = await userService.createUser(username, email, password, mobileno);
+    const user = await userService.createUser( email, password, mobileno);
     res.status(201).json({ message: "User added successfully", user });
   } catch (err) {
     console.error("Error creating User:", err);
@@ -82,14 +82,14 @@ exports.delete = async (req, res) => {
 
 // New function for user authentication
 exports.authenticate = async (req, res) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    return res.status(400).json({ message: "Username and password are required" });
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ message: "email and password are required" });
   }
 
   try {
-    const user = await userService.authenticateUser(username, password);
-    res.send({ message: "Authentication successful", user });
+    const user = await userService.authenticateUser(email, password);
+    res.send({ message: "Authentication successful", status:200 });
   } catch (err) {
     console.error("Error authenticating User:", err);
     res.status(401).json({ error: "Authentication failed" });

@@ -1,3 +1,4 @@
+// index.js
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -6,6 +7,13 @@ const cors = require("cors");
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Enable CORS for requests from specified origins
+app.use(cors({
+  origin: ["http://localhost:5173"], // Allow requests from this origin
+  methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
+}));
 
 // Database connection
 const dbConfig = require("./config/db.config");
@@ -24,11 +32,7 @@ mongoose
 
 // Routes
 const routes = require("./routes");
-
-// Enable CORS for requests from specified origins
-app.use("/api", cors({
-  origin: ["http://localhost:3030", "http://localhost:5002"],
-}), routes);
+app.use("/api", routes); // Ensure this is after the CORS middleware
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
