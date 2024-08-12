@@ -44,7 +44,10 @@ cd backend
 ```
 npm install
 ```
-
+### run the server
+```
+npm start
+```
 ### now go to the frontend folder
 
 ```
@@ -55,4 +58,8 @@ cd frontend
 
 ```
 npm install
+```
+### run frontend code
+```
+npm run dev
 ```
